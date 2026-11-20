@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -7,11 +8,20 @@ export default defineConfig({
     port: 3000,
   },
   build: {
-    outDir: 'build',   // keep same output dir as CRA so Dockerfile COPY still works
+    outDir: 'build',
   },
   test: {
-    environment: 'jsdom',
     globals: true,
-    setupFiles: './src/setupTests.js',
+    environment: 'jsdom',
+    setupFiles: ['./src/setupTests.js'],
+    // Tell Vitest to transform JSX in test files
+    include: ['src/**/*.test.{js,jsx,ts,tsx}'],
+    deps: {
+      optimizer: {
+        web: {
+          include: ['@testing-library/jest-dom'],
+        },
+      },
+    },
   },
 });
