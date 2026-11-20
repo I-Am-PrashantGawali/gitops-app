@@ -2,21 +2,17 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Install dependencies first (cached layer)
 COPY package*.json ./
-RUN npm ci --registry https://registry.npmjs.org/ --legacy-peer-deps
+RUN npm install --registry https://registry.npmjs.org/
 
-# Copy source and build
 COPY . .
 RUN npm run build
 
-# ── Production stage — serve with nginx ──────────────────────────────────────
+# ── Production stage ─────────────────────────────────────────────────────────
 FROM nginx:1.25-alpine
 
-# Copy the React build output
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Custom nginx config — handle React client-side routing
 RUN printf 'server {\n\
     listen 3000;\n\
     root /usr/share/nginx/html;\n\

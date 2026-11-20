@@ -1,15 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import '@testing-library/jest-dom';
 import App from './App';
 
-// Mock the task service — must return { data: [] } to match
-// the destructuring in Tasks.js:  const { data } = await getTasks()
-jest.mock('./services/taskServices', () => ({
-  getTasks:    jest.fn().mockResolvedValue({ data: [] }),
-  addTask:     jest.fn().mockResolvedValue({ data: {} }),
-  updateTask:  jest.fn().mockResolvedValue({ data: {} }),
-  deleteTask:  jest.fn().mockResolvedValue({ data: {} }),
+vi.mock('./services/taskServices', () => ({
+  getTasks:   vi.fn().mockResolvedValue({ data: [] }),
+  addTask:    vi.fn().mockResolvedValue({ data: {} }),
+  updateTask: vi.fn().mockResolvedValue({ data: {} }),
+  deleteTask: vi.fn().mockResolvedValue({ data: {} }),
 }));
 
 describe('App', () => {

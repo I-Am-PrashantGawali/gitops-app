@@ -33,7 +33,7 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
 
       - run: npm ci --legacy-peer-deps
-      - run: CI=true npm test -- --watchAll=false
+      - run: npm test
 
   # ── 2. Build & Push ───────────────────────────────────────────────────────
   build-push:
