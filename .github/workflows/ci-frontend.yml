@@ -94,7 +94,7 @@ jobs:
       - name: Patch frontend deployment image
         run: |
           sed -i \
-            "s|image: .*/${{ env.ECR_REPO }}:.*|image: ${{ needs.build-push.outputs.image_uri }}|g" \
+            "s|image: .*|image: ${{ needs.build-push.outputs.image_uri }}|g" \
             k8s_manifests/frontend-deployment.yaml
 
       - name: Commit and push
