@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Install dependencies first (cached layer)
 COPY package*.json ./
-RUN npm ci --registry https://registry.npmjs.org/
+RUN npm ci --registry https://registry.npmjs.org/ --legacy-peer-deps
 
 # Copy source and build
 COPY . .
