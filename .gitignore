@@ -1,0 +1,12 @@
+node_modules/
+build/
+.env
+.env.*
+
+# Dev-only K8s secret — never push with real credentials
+# (the file is committed but only contains a dev-only placeholder)
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
