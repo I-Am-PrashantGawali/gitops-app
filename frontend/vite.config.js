@@ -3,7 +3,12 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      // Also apply JSX transform to plain .js files that contain JSX
+      include: ['**/*.{jsx,js}'],
+    }),
+  ],
   server: {
     port: 3000,
   },
@@ -14,14 +19,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/setupTests.js'],
-    // Tell Vitest to transform JSX in test files
-    include: ['src/**/*.test.{js,jsx,ts,tsx}'],
-    deps: {
-      optimizer: {
-        web: {
-          include: ['@testing-library/jest-dom'],
-        },
-      },
+    include: ['src/**/*.test.{js,jsx}'],
+    // Apply the React transform to test files
+    transformMode: {
+      web: [/\.[jt]sx?$/],
     },
   },
 });
