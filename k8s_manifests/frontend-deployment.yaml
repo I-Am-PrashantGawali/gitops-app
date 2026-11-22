@@ -20,6 +20,7 @@ spec:
     metadata:
       labels:
         role: frontend
+        app.kubernetes.io/instance: three-tier-app
     spec:
       containers:
       - name: frontend

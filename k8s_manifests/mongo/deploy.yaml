@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: mongodb
+        app.kubernetes.io/instance: three-tier-app
     spec:
       containers:
       - name: mongodb
