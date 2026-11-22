@@ -13,4 +13,4 @@ spec:
           - name: job-container
             image: your-image:tag
             command: ["echo", "Hello, Kubernetes CronJob!"]
-      restartPolicy: OnFailure
+          restartPolicy: OnFailure
