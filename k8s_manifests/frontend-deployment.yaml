@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: 132551339390.dkr.ecr.us-east-1.amazonaws.com/frontend:v10-592a7ca
+        image: 132551339390.dkr.ecr.us-east-1.amazonaws.com/frontend:v11-19030c7
         imagePullPolicy: Always
         env:
           - name: VITE_BACKEND_URL
