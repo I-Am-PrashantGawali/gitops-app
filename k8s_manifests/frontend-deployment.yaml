@@ -26,7 +26,7 @@ spec:
         image: 132551339390.dkr.ecr.us-east-1.amazonaws.com/frontend:v10-592a7ca
         imagePullPolicy: Always
         env:
-          - name: REACT_APP_BACKEND_URL
+          - name: VITE_BACKEND_URL
             value: "https://app.prashantgawali.site/api/tasks"
         ports:
         - containerPort: 3000

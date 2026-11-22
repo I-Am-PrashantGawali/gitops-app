@@ -1,6 +1,7 @@
 import axios from "axios";
-const apiUrl = process.env.REACT_APP_BACKEND_URL //"http://localhost:8080/api/tasks";
-console.log(apiUrl)
+
+const apiUrl = import.meta.env.VITE_BACKEND_URL || "https://app.prashantgawali.site/api/tasks";
+
 export function getTasks() {
     return axios.get(apiUrl);
 }
