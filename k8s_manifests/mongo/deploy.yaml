@@ -7,6 +7,8 @@ metadata:
     app: mongodb
     env: demo
     app.kubernetes.io/instance: three-tier-app
+    app.kubernetes.io/name: mongodb
+    app.kubernetes.io/part-of: three-tier-app
 spec:
   replicas: 1
   selector:
