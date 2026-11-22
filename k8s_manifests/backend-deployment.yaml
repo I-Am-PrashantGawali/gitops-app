@@ -6,6 +6,9 @@ metadata:
   labels:
     role: api
     env: demo
+    app.kubernetes.io/instance: three-tier-app
+    app.kubernetes.io/name: api
+    app.kubernetes.io/part-of: three-tier-app
 spec:
   replicas: 1
   strategy:
@@ -21,6 +24,8 @@ spec:
       labels:
         role: api
         app.kubernetes.io/instance: three-tier-app
+        app.kubernetes.io/name: api
+        app.kubernetes.io/part-of: three-tier-app
     spec:
       containers:
       - name: api
