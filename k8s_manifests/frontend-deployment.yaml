@@ -27,7 +27,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: REACT_APP_BACKEND_URL
-            value: "http://app.prashantgawali.site/api/tasks"
+            value: "https://app.prashantgawali.site/api/tasks"
         ports:
         - containerPort: 3000
         # livenessProbe:

@@ -8,13 +8,15 @@ metadata:
     alb.ingress.kubernetes.io/group.name: demo-lb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    #Uncommnt below to enable https, generate certificate from AWS ACM
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:120717539064:certificate/befc6ed9-44ae-41a1-ba96-0d562a369f64
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:132551339390:certificate/a5ff1329-84a6-4041-b7cc-7f5e6402bf78
+    external-dns.alpha.kubernetes.io/hostname: app.prashantgawali.site
 spec:
   ingressClassName: alb
   rules:
-    - host: app.sandipdas.in
+    - host: app.prashantgawali.site
       http:
         paths:
           - path: /api
@@ -22,13 +24,6 @@ spec:
             backend:
               service:
                 name: api
-                port:
-                  number: 8080
-          - path: /v2/api
-            pathType: Prefix
-            backend:
-              service:
-                name: apiv2
                 port:
                   number: 8080
           - path: /
